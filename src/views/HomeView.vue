@@ -1,8 +1,4 @@
-
 <template>
-  <main>
-    HeyHey!
-  </main>
+  <main>HeyHey!</main>
 </template>
-<script setup>
-</script>
+<script setup></script>
