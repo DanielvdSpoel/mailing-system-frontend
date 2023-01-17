@@ -3,7 +3,7 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
         class="mx-auto h-16 w-auto rounded-xl"
-        src="icon.png"
+        src="@/assets/icon.png"
         alt="Mailing system"
       />
       <h2

@@ -1,0 +1,6 @@
+{
+  "appId": "nl.danielvdspoel.mailingsystem",
+  "appName": "Mailing System",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

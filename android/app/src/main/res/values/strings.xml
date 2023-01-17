@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mailing System</string>
+    <string name="title_activity_main">Mailing System</string>
+    <string name="package_name">nl.danielvdspoel.mailingsystem</string>
+    <string name="custom_url_scheme">nl.danielvdspoel.mailingsystem</string>
+</resources>
