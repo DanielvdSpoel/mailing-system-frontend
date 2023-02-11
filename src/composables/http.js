@@ -45,6 +45,10 @@ http.interceptors.response.use(
       useErrorStore().setFormErrors(error.response.data.errors);
     }
 
+    if (error.response.status === 401) {
+      await useUserStore().setToken(null);
+      await router.push("/login");
+    }
     //todo catch unauthenicated error
 
     //Show error toast

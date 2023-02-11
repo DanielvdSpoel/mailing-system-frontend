@@ -1,20 +1,20 @@
 <template>
   <BaseField
-      :name="name"
-      :label="label"
-      :description="description"
-      :required="required"
-      :form="form"
+    :name="name"
+    :label="label"
+    :description="description"
+    :required="required"
+    :form="form"
   >
     <textarea
-        :id="name"
-        :name="name"
-        :rows="rows"
-        v-on:input="$emit('update:modelValue', $event.target.value)"
-        v-bind:value="modelValue"
-        class="block w-full pr-10 border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
-        :placeholder="placeholder"
-        v-bind:class="{
+      :id="name"
+      :name="name"
+      :rows="rows"
+      v-on:input="$emit('update:modelValue', $event.target.value)"
+      v-bind:value="modelValue"
+      class="block w-full pr-10 border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
+      :placeholder="placeholder"
+      v-bind:class="{
         'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500':
           error,
       }"
@@ -25,11 +25,11 @@
 
 <script>
 import BaseField from "@/components/Fields/BaseField.vue";
-import {useErrorStore} from "@/stores/errors";
+import { useErrorStore } from "@/stores/errors";
 
 export default {
   name: "TextareaField",
-  components: {BaseField},
+  components: { BaseField },
   props: {
     modelValue: String,
     form: Object,

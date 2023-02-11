@@ -1,9 +1,7 @@
 <template>
   <div>
-
     <div class="flex">
-      <div class="text-white">
-      </div>
+      <div class="text-white"></div>
       <label
         :for="name"
         class="block text-sm font-medium text-gray-700 dark:text-gray-200 mt-1"
@@ -26,7 +24,7 @@
 </template>
 
 <script>
-import {useErrorStore} from "@/stores/errors";
+import { useErrorStore } from "@/stores/errors";
 
 export default {
   name: "BaseField",
@@ -39,10 +37,7 @@ export default {
   },
   computed: {
     error() {
-      console.log("liela");
-
       const store = useErrorStore();
-      console.log(store.getFormError(this.name));
       return store.getFormError(this.name);
     },
   },

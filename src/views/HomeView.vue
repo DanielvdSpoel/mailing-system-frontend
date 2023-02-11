@@ -1,4 +1,12 @@
 <template>
-  <main>HeyHey!</main>
+  <MainLayout> </MainLayout>
 </template>
-<script setup></script>
+
+<script>
+import MainLayout from "@/layouts/MainLayout.vue";
+
+export default {
+  name: "LoginView",
+  components: { MainLayout },
+};
+</script>

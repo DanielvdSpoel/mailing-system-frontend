@@ -9,7 +9,7 @@
   >
     <div
       v-if="shouldShow"
-      class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5"
+      class="z-[20] pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5"
     >
       <div class="p-4">
         <div class="flex items-start">
@@ -80,9 +80,9 @@ export default {
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.shouldShow = false;
-    }, this.notification.duration);
+    // setTimeout(() => {
+    //   this.shouldShow = false;
+    // }, this.notification.duration);
   },
   components: {
     CheckCircleIcon,

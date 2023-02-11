@@ -20,7 +20,8 @@
         :placeholder="placeholder"
         :disabled="disabled"
         v-bind:class="{
-          'border-danger-300 text-danger-900 placeholder-danger-300 focus:ring-danger-500 focus:border-danger-500 dark:border-danger-500': error !== null,
+          'border-danger-300 text-danger-900 placeholder-danger-300 focus:ring-danger-500 focus:border-danger-500 dark:border-danger-500':
+            error !== null,
           'dark:border-gray-900': error === null,
         }"
       />
@@ -70,7 +71,6 @@ export default {
   },
   computed: {
     error() {
-      console.log("error");
       const store = useErrorStore();
       return store.getFormError(this.name);
     },

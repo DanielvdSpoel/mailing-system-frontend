@@ -1,6 +1,8 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import LoginView from "@/views/auth/LoginView.vue";
-import {useUserStore} from "@/stores/user";
+import { useUserStore } from "@/stores/user";
+import { Preferences } from "@capacitor/preferences";
+import HomeView from "@/views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,25 +11,35 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
-      meta: {requiresAuth: false}
+      meta: { requiresAuth: false },
     },
     {
-      path: "/about",
-      name: "about",
-      meta: {requiresAuth: true},
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      path: "/",
+      name: "home",
+      component: HomeView,
+      meta: { requiresAuth: true },
     },
   ],
 });
 
-router.beforeEach(async (to, from) => {
+//Collect data from cache
+router.beforeEach(async () => {
+  const userStore = useUserStore();
+  const { value: token } = await Preferences.get({ key: "token" });
+  if (token) {
+    await userStore.setToken(token);
+  }
+  const { value: user } = await Preferences.get({ key: "user" });
+  if (user) {
+    userStore.setUser(user);
+  }
+});
+
+router.beforeEach(async (to) => {
   if (!useUserStore().isAuthenticated && to.meta.requiresAuth) {
     // redirect the user to the login page
-    return {name: 'login'}
+    return { name: "login" };
   }
-})
+});
 
 export default router;

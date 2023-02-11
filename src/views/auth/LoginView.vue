@@ -28,8 +28,8 @@
 <script>
 import AuthLayout from "@/layouts/AuthLayout.vue";
 import InputField from "@/components/fields/InputField.vue";
-import {useUserStore} from "@/stores/user";
-import {useNotificationStore} from "@/stores/notifications";
+import { useUserStore } from "@/stores/user";
+import { useNotificationStore } from "@/stores/notifications";
 
 export default {
   name: "LoginView",
@@ -50,8 +50,7 @@ export default {
         .post("/auth/login", this.form)
         .then(async (result) => {
           const userStore = useUserStore();
-          userStore.setToken(result.data.token);
-          console.log(userStore.token);
+          await userStore.setToken(result.data.token);
           await userStore.fetchUser(this.$http);
 
           useNotificationStore().addNotification({
@@ -60,10 +59,10 @@ export default {
             duration: 4000,
           });
 
-          // const redirectTo = this.$route.query.redirect
-          //   ? this.$route.query.redirect
-          //   : "/admin";
-          // await this.$router.push(redirectTo);
+          const redirectTo = this.$route.query.redirect
+            ? this.$route.query.redirect
+            : "/";
+          await this.$router.push(redirectTo);
         })
         .catch(async function (error) {
           // handle error
