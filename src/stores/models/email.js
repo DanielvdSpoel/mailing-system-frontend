@@ -4,7 +4,7 @@ import http from "@/composables/http";
 export const useEmailStore = defineStore("emails", {
   state: () => {
     return {
-      emails: [],
+      emails: null,
       selectedInbox: null,
       meta: null,
       urls: null,
@@ -13,6 +13,15 @@ export const useEmailStore = defineStore("emails", {
   getters: {
     isModuleLoaded(state) {
       return state.meta !== null && state.urls !== null;
+    },
+    getEmails(state) {
+      if (state.emails.length > 0) {
+        return state.emails;
+      }
+      if (!state.emails == null) {
+        useEmailStore().fetchEmails();
+      }
+      return state.emails;
     },
     getSelectedInbox(state) {
       if (state.selectedInbox) {

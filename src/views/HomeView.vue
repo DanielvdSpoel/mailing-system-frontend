@@ -14,7 +14,7 @@ import { useEmailStore } from "@/stores/models/email";
 import EmailTable from "@/components/home/EmailTable.vue";
 
 export default {
-  name: "LoginView",
+  name: "HomeView",
   components: { EmailTable, MainLayout },
   mounted() {
     useEmailStore().fetchEmails();

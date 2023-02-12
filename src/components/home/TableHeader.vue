@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between p-1">
+  <div class="flex justify-between py-1 px-3">
     <!-- controls -->
     <div class="flex gap-2">
       <EmailSelectorDropdown />
