@@ -1,5 +1,5 @@
 <template>
-  <div class="px-3 mt-2 w-[50%]">
+  <div class="px-3 mt-2 w-[75%]">
     <label for="search" class="sr-only">Search</label>
     <div class="relative mt-1 rounded-md shadow-sm">
       <div
