@@ -134,9 +134,9 @@
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
             alt="Your Company"
           />
-          <a class="h-8 text-md font-semibold text-white mt-0.5"
-            >Mailing system</a
-          >
+          <a class="h-8 text-md font-semibold text-white mt-0.5">
+            Mailing system
+          </a>
         </div>
         <div class="mt-5 flex flex-1 flex-col">
           <nav class="flex-1 px-2 pb-4">
@@ -144,7 +144,7 @@
 
             <button
               type="button"
-              class="m-3 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              class="mt-3 w-full inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base text-white shadow-sm hover:bg-indigo-800 dark:hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <EnvelopeIcon class="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
               Compose email

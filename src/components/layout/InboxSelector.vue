@@ -2,7 +2,7 @@
   <Menu as="div" class="text-left">
     <div>
       <MenuButton
-        class="group w-full rounded-md px-3.5 py-2 text-left text-sm font-medium text-gray-700 hover:bg-primary-600"
+        class="group w-full rounded-md px-3.5 py-2 text-left text-sm font-medium text-gray-700 bg-indigo-600 hover:bg-primary-800"
       >
         <span class="flex w-full items-center justify-between">
           <span class="flex min-w-0 items-center justify-between space-x-3">
