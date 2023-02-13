@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-[5%_25%_60%_10%] px-3 py-2 hover:shadow-lg cursor-pointer overflow-hidden">
-    <div class="flex h-6 items-center mr-3">
+    <div class="mr-3 flex h-6 items-center">
       <input
         type="checkbox"
         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -12,9 +12,9 @@
     <div class="flex gap-1 whitespace-nowrap">
       <p>{{ email.subject }}</p>
       <p>-</p>
-      <p class="whitespace-nowrap overflow-hidden truncate">{{ getBodyPreview }}</p>
+      <p class="overflow-hidden truncate whitespace-nowrap">{{ getBodyPreview }}</p>
     </div>
-    <div class="whitespace-nowrap flex justify-end">
+    <div class="flex justify-end whitespace-nowrap">
       <p>{{ getTime }}</p>
     </div>
   </div>

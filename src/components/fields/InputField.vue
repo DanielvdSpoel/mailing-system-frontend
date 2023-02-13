@@ -6,7 +6,7 @@
     :required="required"
     :test="error"
   >
-    <div class="mt-1 relative rounded-md shadow-sm">
+    <div class="relative mt-1 rounded-md shadow-sm">
       <input
         :type="type"
         :name="name"
@@ -16,7 +16,7 @@
         :max="max"
         v-on:input="$emit('update:modelValue', $event.target.value)"
         v-bind:value="modelValue"
-        class="block w-full pr-10 border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md disabled:bg-gray-100 disabled:cursor-not-allowed disabled:border-gray-400 disabled:opacity-70 dark:bg-gray-800 dark:text-gray-300"
+        class="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-md border-gray-300 pr-10 focus:outline-none disabled:cursor-not-allowed disabled:border-gray-400 disabled:bg-gray-100 disabled:opacity-70 dark:bg-gray-800 dark:text-gray-300 sm:text-sm"
         :placeholder="placeholder"
         :disabled="disabled"
         v-bind:class="{
@@ -27,11 +27,11 @@
       />
       <div
         v-if="error !== null"
-        class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
+        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
       >
         <!-- Heroicon name: solid/exclamation-circle -->
         <svg
-          class="h-5 w-5 text-danger-500"
+          class="text-danger-500 h-5 w-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"

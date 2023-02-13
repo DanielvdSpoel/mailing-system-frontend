@@ -20,7 +20,7 @@
               >
                 <DialogPanel class="pointer-events-auto w-screen max-w-md">
                   <div
-                    class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-xl"
+                    class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl dark:bg-gray-800"
                   >
                     <div class="p-6">
                       <div class="flex items-start justify-between">
@@ -32,7 +32,7 @@
                         <div class="ml-3 flex h-7 items-center">
                           <button
                             type="button"
-                            class="rounded-md bg-white dark:bg-gray-800 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:ring-2 focus:ring-indigo-500"
+                            class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:hover:text-gray-300"
                             @click="isSlideOutOpen = false"
                           >
                             <span class="sr-only">Close panel</span>
@@ -124,12 +124,12 @@
                               </span>
                             </MenuButton>
                             <transition
-                              enter-active-class="transition ease-out duration-100"
-                              enter-from-class="transform opacity-0 scale-95"
-                              enter-to-class="transform opacity-100 scale-100"
-                              leave-active-class="transition ease-in duration-75"
-                              leave-from-class="transform opacity-100 scale-100"
-                              leave-to-class="transform opacity-0 scale-95"
+                              enter-active-class="transition duration-100 ease-out"
+                              enter-from-class="scale-95 transform opacity-0"
+                              enter-to-class="scale-100 transform opacity-100"
+                              leave-active-class="transition duration-75 ease-in"
+                              leave-from-class="scale-100 transform opacity-100"
+                              leave-to-class="scale-95 transform opacity-0"
                             >
                               <MenuItems
                                 class="absolute top-0 right-9 z-10 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -177,7 +177,7 @@
     <button
       type="button"
       @click="isSlideOutOpen = true"
-      class="rounded-full bg-white dark:bg-gray-700 p-1 text-gray-400 dark:hover:text-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-700 dark:hover:text-gray-300"
     >
       <span class="sr-only">View notifications</span>
       <BellIcon class="h-6 w-6" aria-hidden="true" />

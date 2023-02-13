@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <template #content>
-      <div class="bg-white dark:bg-gray-800 h-[84vh] rounded-lg p-2">
+      <div class="h-[84vh] rounded-lg bg-white p-2 dark:bg-gray-800">
         <EmailTable />
       </div>
     </template>

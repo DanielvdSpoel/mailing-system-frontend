@@ -1,6 +1,6 @@
 <template>
   <div class="flex gap-1">
-    <div class="flex h-6 items-center mt-1">
+    <div class="mt-1 flex h-6 items-center">
       <input
         type="checkbox"
         :indeterminate.prop="true"
@@ -12,7 +12,7 @@
       <div>
         <MenuButton>
           <div
-            class="inline-flex items-center text-gray-400 hover:bg-gray-100 py-1.5 rounded-md"
+            class="inline-flex items-center rounded-md py-1.5 text-gray-400 hover:bg-gray-100"
           >
             <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
           </div>
@@ -20,12 +20,12 @@
       </div>
 
       <transition
-        enter-active-class="transition ease-out duration-100"
-        enter-from-class="transform opacity-0 scale-95"
-        enter-to-class="transform opacity-100 scale-100"
-        leave-active-class="transition ease-in duration-75"
-        leave-from-class="transform opacity-100 scale-100"
-        leave-to-class="transform opacity-0 scale-95"
+        enter-active-class="transition duration-100 ease-out"
+        enter-from-class="scale-95 transform opacity-0"
+        enter-to-class="scale-100 transform opacity-100"
+        leave-active-class="transition duration-75 ease-in"
+        leave-from-class="scale-100 transform opacity-100"
+        leave-to-class="scale-95 transform opacity-0"
       >
         <MenuItems
           class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"

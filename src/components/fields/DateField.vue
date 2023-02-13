@@ -1,10 +1,10 @@
 <template>
   <div v-click-away="onClickAway">
-    <div class="flex mt-1">
-      <label :for="name" class="block text-sm font-medium text-gray-700 mt-1">{{
+    <div class="mt-1 flex">
+      <label :for="name" class="mt-1 block text-sm font-medium text-gray-700">{{
         label
       }}</label>
-      <span class="text-red-600 ml-0.5" v-if="required">*</span>
+      <span class="ml-0.5 text-red-600" v-if="required">*</span>
     </div>
     <input
       type="text"
@@ -13,7 +13,7 @@
       v-model="displayValue"
       readonly
       @click="handleInputClick"
-      class="block w-full pr-10 border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
+      class="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-md border-gray-300 pr-10 focus:outline-none sm:text-sm"
     />
     <div v-show="isSelectorOpen" class="mt-2">
       <DateSelector

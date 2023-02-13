@@ -2,39 +2,39 @@
   <Menu as="div" class="text-left">
     <div>
       <MenuButton
-        class="group w-full rounded-md px-3.5 py-2 text-left text-sm font-medium text-gray-700 bg-indigo-600 hover:bg-primary-800"
+        class="hover:bg-primary-800 group w-full rounded-md bg-indigo-600 px-3.5 py-2 text-left text-sm font-medium text-gray-700"
       >
         <span class="flex w-full items-center justify-between">
           <span class="flex min-w-0 items-center justify-between space-x-3">
-            <InboxIcon class="h-5 w-5 text-primary-300" />
+            <InboxIcon class="text-primary-300 h-5 w-5" />
             <span class="flex min-w-0 flex-1 flex-col">
               <span class="truncate text-sm font-medium text-white">
                 {{ getSelectedInbox.name }}
               </span>
-              <span class="truncate text-sm text-primary-100">
+              <span class="text-primary-100 truncate text-sm">
                 {{ getSelectedInbox.senderAddresses[0] }}
               </span>
             </span>
           </span>
           <ChevronUpDownIcon
-            class="h-5 w-5 flex-shrink-0 text-white group-hover:text-primary-200"
+            class="group-hover:text-primary-200 h-5 w-5 flex-shrink-0 text-white"
             aria-hidden="true"
           />
         </span>
       </MenuButton>
     </div>
     <transition
-      enter-active-class="transition ease-out duration-100"
-      enter-from-class="transform opacity-0 scale-95"
-      enter-to-class="transform opacity-100 scale-100"
-      leave-active-class="transition ease-in duration-75"
-      leave-from-class="transform opacity-100 scale-100"
-      leave-to-class="transform opacity-0 scale-95"
+      enter-active-class="transition duration-100 ease-out"
+      enter-from-class="scale-95 transform opacity-0"
+      enter-to-class="scale-100 transform opacity-100"
+      leave-active-class="transition duration-75 ease-in"
+      leave-from-class="scale-100 transform opacity-100"
+      leave-to-class="scale-95 transform opacity-0"
     >
       <MenuItems
-        class="absolute right-0 left-0 z-10 mx-3 mt-1 origin-top divide-y divide-gray-200 rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+        class="absolute right-0 left-0 z-10 mx-3 mt-1 origin-top divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800"
       >
-        <div class="py-1 divide-y divide-gray-200 dark:divide-gray-700">
+        <div class="divide-y divide-gray-200 py-1 dark:divide-gray-700">
           <MenuItem @click="selectInbox(null)" as="div" v-slot="{ active }">
             <span
               :class="[
@@ -46,7 +46,7 @@
             >
               <span class="flex min-w-0 items-center justify-between space-x-3">
                 <InboxIcon
-                  class="h-5 w-5 text-gray-400 dark:text-primary-300"
+                  class="dark:text-primary-300 h-5 w-5 text-gray-400"
                 />
                 <span class="flex min-w-0 flex-1 flex-col">
                   <span
@@ -55,7 +55,7 @@
                     Global inbox
                   </span>
                   <span
-                    class="truncate text-sm text-gray-600 dark:text-gray-200 italic"
+                    class="truncate text-sm italic text-gray-600 dark:text-gray-200"
                   >
                     All inboxes
                   </span>
@@ -81,7 +81,7 @@
             >
               <span class="flex min-w-0 items-center justify-between space-x-3">
                 <InboxIcon
-                  class="h-5 w-5 text-gray-400 dark:text-primary-300"
+                  class="dark:text-primary-300 h-5 w-5 text-gray-400"
                 />
                 <span class="flex min-w-0 flex-1 flex-col">
                   <span
@@ -90,7 +90,7 @@
                     {{ inbox.name }}
                   </span>
                   <span
-                    class="truncate text-sm text-gray-600 dark:text-gray-200 italic"
+                    class="truncate text-sm italic text-gray-600 dark:text-gray-200"
                   >
                     {{ inbox.senderAddresses[0] }}
                   </span>

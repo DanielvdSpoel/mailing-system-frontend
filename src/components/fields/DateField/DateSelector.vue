@@ -1,8 +1,8 @@
 <template>
   <div
-    class="bg-white rounded-md text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-9"
+    class="rounded-md bg-white text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 xl:col-start-9"
   >
-    <div class="flex items-center text-gray-900 px-4 pt-4">
+    <div class="flex items-center px-4 pt-4 text-gray-900">
       <button
         type="button"
         @click="previousMonth"
@@ -25,7 +25,7 @@
         </svg>
       </button>
       <button
-        class="flex-auto font-semibold cursor-pointer hover:bg-gray-50 py-2 px-4"
+        class="flex-auto cursor-pointer py-2 px-4 font-semibold hover:bg-gray-50"
         @click="$emit('switchView', 'months')"
       >
         {{ capitalize(translatedMonth) }} {{ year }}

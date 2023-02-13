@@ -15,7 +15,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div
-        class="bg-white dark:bg-gray-700 py-8 px-4 shadow sm:rounded-lg sm:px-10"
+        class="bg-white py-8 px-4 shadow dark:bg-gray-700 sm:rounded-lg sm:px-10"
       >
         <slot name="content" />
       </div>

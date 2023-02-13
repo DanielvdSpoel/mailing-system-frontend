@@ -29,7 +29,7 @@
             leave-to="-translate-x-full"
           >
             <DialogPanel
-              class="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 dark:bg-gray-800 pt-5 pb-4"
+              class="relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4 dark:bg-gray-800"
             >
               <TransitionChild
                 as="template"
@@ -51,13 +51,13 @@
                   </button>
                 </div>
               </TransitionChild>
-              <div class="flex flex-shrink-0 items-center px-4 space-x-3">
+              <div class="flex flex-shrink-0 items-center space-x-3 px-4">
                 <img
                   class="h-8 w-auto"
                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
                   alt="Your Company"
                 />
-                <a class="h-8 text-md font-semibold text-white mt-0.5"
+                <a class="text-md mt-0.5 h-8 font-semibold text-white"
                   >Mailing system</a
                 >
               </div>
@@ -75,7 +75,7 @@
                       ]"
                     >
                       <InboxIcon
-                        class="mr-4 h-6 w-6 flex-shrink-0 text-primary-300"
+                        class="text-primary-300 mr-4 h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
                       {{ inbox.name }}
@@ -84,7 +84,7 @@
                   <div class="mt-8">
                     <!-- Secondary navigation -->
                     <h3
-                      class="px-3 text-sm font-medium text-primary-100"
+                      class="text-primary-100 px-3 text-sm font-medium"
                       id="desktop-teams-headline"
                     >
                       Labels
@@ -98,7 +98,7 @@
                         v-for="label in getLabels"
                         :key="label.name"
                         href="#"
-                        class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-primary-100 hover:bg-primary-600"
+                        class="text-primary-100 hover:bg-primary-600 group flex items-center rounded-md px-3 py-2 text-sm font-medium"
                       >
                         <span
                           :class="[
@@ -126,15 +126,15 @@
     <div class="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
       <div
-        class="flex flex-grow flex-col overflow-y-auto bg-primary-700 pt-5 dark:bg-gray-800"
+        class="bg-primary-700 flex flex-grow flex-col overflow-y-auto pt-5 dark:bg-gray-800"
       >
-        <div class="flex flex-shrink-0 items-center px-4 space-x-3">
+        <div class="flex flex-shrink-0 items-center space-x-3 px-4">
           <img
             class="h-8 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=300"
             alt="Your Company"
           />
-          <a class="h-8 text-md font-semibold text-white mt-0.5">
+          <a class="text-md mt-0.5 h-8 font-semibold text-white">
             Mailing system
           </a>
         </div>
@@ -144,7 +144,7 @@
 
             <button
               type="button"
-              class="mt-3 w-full inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base text-white shadow-sm hover:bg-indigo-800 dark:hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              class="mt-3 inline-flex w-full items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base text-white shadow-sm hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:hover:bg-indigo-700"
             >
               <EnvelopeIcon class="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
               Compose email
@@ -153,7 +153,7 @@
             <div class="mt-8">
               <!-- Secondary navigation -->
               <h3
-                class="px-3 text-sm font-medium text-primary-100"
+                class="text-primary-100 px-3 text-sm font-medium"
                 id="desktop-teams-headline"
               >
                 Labels
@@ -167,7 +167,7 @@
                   v-for="label in getLabels"
                   :key="label.name"
                   href="#"
-                  class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-primary-100 hover:bg-primary-600"
+                  class="text-primary-100 hover:bg-primary-600 group flex items-center rounded-md px-3 py-2 text-sm font-medium"
                 >
                   <span
                     :class="[

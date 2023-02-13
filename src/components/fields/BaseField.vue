@@ -4,10 +4,10 @@
       <div class="text-white"></div>
       <label
         :for="name"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-200 mt-1"
+        class="mt-1 block text-sm font-medium text-gray-700 dark:text-gray-200"
         >{{ label }}</label
       >
-      <span class="text-red-600 ml-0.5" v-if="required">*</span>
+      <span class="ml-0.5 text-red-600" v-if="required">*</span>
     </div>
     <slot />
     <p

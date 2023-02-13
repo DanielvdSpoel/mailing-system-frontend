@@ -15,7 +15,7 @@
         type="text"
         name="search"
         id="search"
-        class="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-900"
+        class="block w-full rounded-md border-gray-300 pl-9 focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-900 dark:bg-gray-700 dark:text-gray-300 sm:text-sm"
         placeholder="Search"
       />
     </div>

@@ -1,32 +1,32 @@
 <template>
   <transition
-    enter-active-class="transform ease-out duration-300 transition"
+    enter-active-class="transform transition duration-300 ease-out"
     enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
     enter-to-class="translate-y-0 opacity-100 sm:translate-x-0"
-    leave-active-class="transition ease-in duration-100"
+    leave-active-class="transition duration-100 ease-in"
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >
     <div
       v-if="shouldShow"
-      class="z-[20] pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white dark:bg-gray-700 shadow-lg ring-1 ring-black ring-opacity-5"
+      class="pointer-events-auto z-[20] w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-gray-700"
     >
       <div class="p-4">
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <CheckCircleIcon
               v-if="notification.type == 'success'"
-              class="h-6 w-6 text-success-400"
+              class="text-success-400 h-6 w-6"
               aria-hidden="true"
             />
             <XCircleIcon
               v-if="notification.type == 'danger'"
-              class="h-6 w-6 text-danger-400"
+              class="text-danger-400 h-6 w-6"
               aria-hidden="true"
             />
             <ExclamationCircleIcon
               v-if="notification.type == 'warning'"
-              class="h-6 w-6 text-warning-400"
+              class="text-warning-400 h-6 w-6"
               aria-hidden="true"
             />
           </div>
@@ -42,7 +42,7 @@
             <button
               type="button"
               @click="shouldShow = false"
-              class="inline-flex rounded-md bg-white dark:bg-gray-700 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              class="focus:ring-primary-500 inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:bg-gray-700"
             >
               <span class="sr-only">Close</span>
               <XMarkIcon class="h-5 w-5" aria-hidden="true" />

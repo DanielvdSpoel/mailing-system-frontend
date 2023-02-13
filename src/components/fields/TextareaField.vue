@@ -12,7 +12,7 @@
       :rows="rows"
       v-on:input="$emit('update:modelValue', $event.target.value)"
       v-bind:value="modelValue"
-      class="block w-full pr-10 border-gray-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md"
+      class="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-md border-gray-300 pr-10 focus:outline-none sm:text-sm"
       :placeholder="placeholder"
       v-bind:class="{
         'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500':

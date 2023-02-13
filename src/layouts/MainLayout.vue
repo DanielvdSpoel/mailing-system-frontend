@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 dark:bg-gray-900 min-h-screen">
+  <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
     <SidebarNavigation />
     <div class="flex flex-1 flex-col md:pl-64">
       <div
