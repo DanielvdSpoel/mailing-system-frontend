@@ -4,7 +4,7 @@
       <div>
         <MenuButton>
           <div
-            class="inline-flex items-center text-gray-400 rounded-full hover:bg-gray-100 p-1.5"
+            class="inline-flex items-center text-gray-400 dark:text-gray-500 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5"
           >
             <EllipsisVerticalIcon class="h-5 w-5" aria-hidden="true" />
           </div>

@@ -1,7 +1,7 @@
 <template>
   <div v-if="isModuleLoaded">
     <TableHeader />
-    <div class="divide-y divide-gray-200">
+    <div class="divide-y divide-gray-200 dark:divide-gray-700">
       <TableRow v-for="email in getEmails" :key="email.id" :email="email" />
     </div>
   </div>

@@ -3,8 +3,10 @@
     <div class="flex h-6 items-center mt-1">
       <input
         type="checkbox"
-        :indeterminate.prop="true"
-        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+        @input="toggleEmailSelector"
+        v-model="emailSelectorValue"
+        :indeterminate.prop="emailSelectorIsIndeterminate"
+        class="h-4 w-4 rounded border-gray-300 dark:border-gray-900 dark:bg-gray-600 text-indigo-600 focus:ring-indigo-500"
       />
     </div>
 
@@ -12,7 +14,7 @@
       <div>
         <MenuButton>
           <div
-            class="inline-flex items-center text-gray-400 hover:bg-gray-100 py-1.5 rounded-md"
+            class="inline-flex items-center text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 py-1.5 rounded-md"
           >
             <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
           </div>
@@ -84,10 +86,58 @@
 <script>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import { useSelectedEmailStore } from "@/stores/selectedEmails";
+import { useEmailStore } from "@/stores/models/email";
 
 export default {
   name: "EmailSelectorDropdown",
   components: { Menu, MenuButton, MenuItem, MenuItems, ChevronDownIcon },
+  //:indeterminate.prop="true"
+  data() {
+    return {
+      emailSelectorIsIndeterminate: false,
+      emailSelectorValue: false,
+    };
+  },
+  mounted() {
+    useSelectedEmailStore().$subscribe((mutation, state) => {
+      if (
+        state.selectedEmails.length > 0 &&
+        state.selectedEmails.length < useEmailStore().emails.length
+      ) {
+        this.emailSelectorIsIndeterminate = true;
+      } else if (
+        state.selectedEmails.length === useEmailStore().emails.length
+      ) {
+        this.emailSelectorIsIndeterminate = false;
+        this.emailSelectorValue = true;
+      } else {
+        this.emailSelectorIsIndeterminate = false;
+        this.emailSelectorValue = false;
+      }
+    });
+  },
+  methods: {
+    toggleEmailSelector() {
+      //Boolean is flipped here
+      console.log("toggleEmailSelector");
+      console.log(this.emailSelectorValue);
+      if (!this.emailSelectorValue) {
+        useSelectedEmailStore().selectAllEmails();
+      } else {
+        useSelectedEmailStore().deselectAllEmails();
+      }
+    },
+  },
+  watch: {
+    // emailSelectorValue() {
+    //   if (this.emailSelectorValue) {
+    //     useSelectedEmailStore().selectAllEmails();
+    //   } else {
+    //     useSelectedEmailStore().deselectAllEmails();
+    //   }
+    //},
+  },
 };
 </script>
 
