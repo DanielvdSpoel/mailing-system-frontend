@@ -1,5 +1,6 @@
 <template>
   <button
+    :disabled="loading"
     @click="refresh"
     :class="[
       loading ? 'animate-spin' : '',

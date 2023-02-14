@@ -29,6 +29,14 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
   function (response) {
+    console.log(response.data)
+    if (response.data.message) {
+      useNotificationStore().addNotification({
+        message: response.data.message,
+        type: "success",
+        duration: 4000,
+      });
+    }
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     return response;

@@ -39,7 +39,7 @@ export const useEmailStore = defineStore("emails", {
   },
   actions: {
     setPage(page) {
-      console.log("setPage", page)
+      console.log("setPage", page);
       this.currentPage = page;
       this.fetchEmails();
     },

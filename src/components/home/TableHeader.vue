@@ -12,21 +12,14 @@
 
 <script>
 import { useEmailStore } from "@/stores/models/email";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ArrowPathIcon,
-} from "@heroicons/vue/20/solid";
 import EmailSelectorDropdown from "@/components/home/EmailSelectorDropdown.vue";
 import EmailActions from "@/components/home/EmailActions.vue";
 import RefreshEmailsButton from "@/components/home/RefreshEmailsButton.vue";
 import Pagination from "@/components/home/PaginationControls.vue";
-import CompTest from "@/components/home/CompTest.vue";
 
 export default {
   name: "TableHeader",
   components: {
-    CompTest,
     Pagination,
     RefreshEmailsButton,
     EmailActions,
