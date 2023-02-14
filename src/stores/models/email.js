@@ -44,6 +44,7 @@ export const useEmailStore = defineStore("emails", {
       this.fetchEmails();
     },
     setAmountPerPage(amount) {
+      this.currentPage = 1;
       this.amountPerPage = amount;
       this.fetchEmails();
     },
