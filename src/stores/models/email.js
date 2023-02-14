@@ -8,6 +8,8 @@ export const useEmailStore = defineStore("emails", {
       selectedInbox: null,
       meta: null,
       urls: null,
+      amountPerPage: 25,
+      currentPage: 1,
     };
   },
   getters: {
@@ -15,11 +17,12 @@ export const useEmailStore = defineStore("emails", {
       return state.meta !== null && state.urls !== null;
     },
     getEmails(state) {
+      if (state.emails == null) {
+        useEmailStore().fetchEmails();
+        return [];
+      }
       if (state.emails.length > 0) {
         return state.emails;
-      }
-      if (!state.emails == null) {
-        useEmailStore().fetchEmails();
       }
       return state.emails;
     },
@@ -35,11 +38,23 @@ export const useEmailStore = defineStore("emails", {
     },
   },
   actions: {
+    setPage(page) {
+      console.log("setPage", page)
+      this.currentPage = page;
+      this.fetchEmails();
+    },
+    setAmountPerPage(amount) {
+      this.amountPerPage = amount;
+      this.fetchEmails();
+    },
     selectInbox(inbox) {
       this.selectedInbox = inbox;
     },
     fetchEmails() {
-      const params = {};
+      const params = {
+        per_page: this.amountPerPage,
+        page: this.currentPage,
+      };
       if (this.selectedInbox) {
         params.inbox_id = this.selectedInbox.id;
       }

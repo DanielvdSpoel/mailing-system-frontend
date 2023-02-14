@@ -6,26 +6,7 @@
       <RefreshEmailsButton />
       <EmailActions />
     </div>
-    <!-- pagination -->
-    <div class="flex gap-2">
-      <div
-        class="cursor-pointer text-gray-400 dark:text-gray-500 text-sm flex hover:bg-gray-100 dark:hover:bg-gray-700 px-2 py-1 rounded-md cursor-pointer"
-      >
-        <p>
-          {{ store.meta.from }}-{{ store.meta.to }} of {{ store.meta.total }}
-        </p>
-      </div>
-      <div
-        class="inline-flex items-center text-gray-400 dark:text-gray-500 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5"
-      >
-        <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
-      </div>
-      <div
-        class="inline-flex items-center text-gray-400 dark:text-gray-500 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5"
-      >
-        <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
-      </div>
-    </div>
+    <Pagination />
   </div>
 </template>
 
@@ -39,16 +20,17 @@ import {
 import EmailSelectorDropdown from "@/components/home/EmailSelectorDropdown.vue";
 import EmailActions from "@/components/home/EmailActions.vue";
 import RefreshEmailsButton from "@/components/home/RefreshEmailsButton.vue";
+import Pagination from "@/components/home/PaginationControls.vue";
+import CompTest from "@/components/home/CompTest.vue";
 
 export default {
   name: "TableHeader",
   components: {
+    CompTest,
+    Pagination,
     RefreshEmailsButton,
     EmailActions,
     EmailSelectorDropdown,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ArrowPathIcon,
   },
   computed: {
     store() {
