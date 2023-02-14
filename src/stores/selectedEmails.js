@@ -9,6 +9,17 @@ export const useSelectedEmailStore = defineStore("selectedEmails", {
   },
   getters: {},
   actions: {
+    selectEmailUsingOption(option) {
+      const temp = [];
+      useEmailStore().emails.forEach((email) => {
+        if (option.shouldFilter(email)) {
+          temp.push(email.id);
+        }
+      });
+      this.$patch({
+        selectedEmails: temp,
+      });
+    },
     selectEmail(email) {
       this.$patch((state) => {
         state.selectedEmails = state.selectedEmails.filter(

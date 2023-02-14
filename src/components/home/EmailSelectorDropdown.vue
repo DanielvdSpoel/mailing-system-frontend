@@ -30,52 +30,24 @@
         leave-to-class="transform opacity-0 scale-95"
       >
         <MenuItems
-          class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         >
           <div class="py-1">
-            <MenuItem v-slot="{ active }">
+            <MenuItem
+              v-for="option in options"
+              :key="option.label"
+              v-slot="{ active }"
+            >
               <a
-                href="#"
+                @click="selectOption(option)"
                 :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                  active ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200',
                   'block px-4 py-2 text-sm',
                 ]"
-                >Account settings</a
               >
+                {{ option.label }}
+              </a>
             </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                href="#"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm',
-                ]"
-                >Support</a
-              >
-            </MenuItem>
-            <MenuItem v-slot="{ active }">
-              <a
-                href="#"
-                :class="[
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm',
-                ]"
-                >License</a
-              >
-            </MenuItem>
-            <form method="POST" action="#">
-              <MenuItem v-slot="{ active }">
-                <button
-                  type="submit"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block w-full px-4 py-2 text-left text-sm',
-                  ]"
-                >
-                  Sign out
-                </button>
-              </MenuItem>
-            </form>
           </div>
         </MenuItems>
       </transition>
@@ -92,7 +64,6 @@ import { useEmailStore } from "@/stores/models/email";
 export default {
   name: "EmailSelectorDropdown",
   components: { Menu, MenuButton, MenuItem, MenuItems, ChevronDownIcon },
-  //:indeterminate.prop="true"
   data() {
     return {
       emailSelectorIsIndeterminate: false,
@@ -118,10 +89,11 @@ export default {
     });
   },
   methods: {
+    selectOption(option) {
+      useSelectedEmailStore().selectEmailUsingOption(option);
+    },
     toggleEmailSelector() {
       //Boolean is flipped here
-      console.log("toggleEmailSelector");
-      console.log(this.emailSelectorValue);
       if (!this.emailSelectorValue) {
         useSelectedEmailStore().selectAllEmails();
       } else {
@@ -129,14 +101,19 @@ export default {
       }
     },
   },
-  watch: {
-    // emailSelectorValue() {
-    //   if (this.emailSelectorValue) {
-    //     useSelectedEmailStore().selectAllEmails();
-    //   } else {
-    //     useSelectedEmailStore().deselectAllEmails();
-    //   }
-    //},
+  computed: {
+    options() {
+      return [
+        {
+          label: "Is Read",
+          shouldFilter: (email) => email.is_read,
+        },
+        {
+          label: "Is Unread",
+          shouldFilter: (email) => !email.is_read,
+        },
+      ];
+    },
   },
 };
 </script>

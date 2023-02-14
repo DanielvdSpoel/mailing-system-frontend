@@ -29,7 +29,7 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
   function (response) {
-    console.log(response.data)
+    console.log(response.data);
     if (response.data.message) {
       useNotificationStore().addNotification({
         message: response.data.message,
