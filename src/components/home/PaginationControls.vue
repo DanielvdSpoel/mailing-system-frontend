@@ -3,6 +3,7 @@
     <Listbox as="div" v-model="amountPerPage">
       <div class="relative mt-1">
         <ListboxButton
+          v-tooltip="'Select amount of emails to show'"
           class="cursor-pointer text-gray-400 dark:text-gray-500 text-sm flex hover:bg-gray-100 dark:hover:bg-gray-700 px-2 py-1 rounded-md cursor-pointer"
         >
           <p>
@@ -38,7 +39,8 @@
                     selected ? 'font-semibold' : 'font-normal',
                     'block truncate',
                   ]"
-                  >Show <span class="font-bold">{{ option }}</span> emails
+                >
+                  Show <span class="font-bold">{{ option }}</span> emails
                 </span>
 
                 <span
@@ -58,6 +60,7 @@
     </Listbox>
 
     <button
+      v-tooltip="'Previous page'"
       :disabled="store.urls.prev == null"
       @click="store.setPage(store.meta.current_page - 1)"
       :class="[
@@ -70,6 +73,7 @@
       <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
     </button>
     <button
+      v-tooltip="'Next page'"
       :disabled="store.urls.next == null"
       @click="store.setPage(store.meta.current_page + 1)"
       :class="[
@@ -97,6 +101,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from "@headlessui/vue";
+import { useSelectedEmailStore } from "@/stores/selectedEmails";
 
 export default {
   name: "PaginationControls",
@@ -108,6 +113,7 @@ export default {
   watch: {
     amountPerPage() {
       useEmailStore().setAmountPerPage(this.amountPerPage);
+      useSelectedEmailStore().deselectAllEmails();
     },
   },
   computed: {

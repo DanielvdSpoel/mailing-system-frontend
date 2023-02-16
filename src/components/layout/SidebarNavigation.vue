@@ -159,7 +159,7 @@
                 Labels
               </h3>
               <div
-                class="mt-1 space-y-1"
+                class="mt-1 space-y-1 max-h-[64vh] overflow-y-scroll"
                 role="group"
                 aria-labelledby="desktop-teams-headline"
               >

@@ -2,7 +2,9 @@
   <button
     :disabled="loading"
     @click="refresh"
+    v-tooltip="'Check for new emails'"
     :class="[
+      hidden ? 'hidden' : '',
       loading ? 'animate-spin' : '',
       'inline-flex items-center text-gray-400 rounded-full dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5',
     ]"
@@ -14,6 +16,7 @@
 <script>
 import { ArrowPathIcon } from "@heroicons/vue/20/solid";
 import { useEmailStore } from "@/stores/models/email";
+import { useSelectedEmailStore } from "@/stores/selectedEmails";
 
 export default {
   name: "RefreshEmailsButton",
@@ -24,6 +27,11 @@ export default {
     return {
       loading: false,
     };
+  },
+  computed: {
+    hidden() {
+      return useSelectedEmailStore().selectedEmails.length !== 0;
+    },
   },
   methods: {
     refresh() {

@@ -7,7 +7,15 @@ export const useSelectedEmailStore = defineStore("selectedEmails", {
       selectedEmails: [],
     };
   },
-  getters: {},
+  getters: {
+    getSelectedIds() {
+      const ids = [];
+      this.selectedEmails.forEach((email) => {
+        ids.push(email);
+      });
+      return ids;
+    },
+  },
   actions: {
     selectEmailUsingOption(option) {
       const temp = [];

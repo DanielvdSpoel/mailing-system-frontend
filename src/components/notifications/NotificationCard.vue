@@ -80,9 +80,9 @@ export default {
     };
   },
   mounted() {
-    // setTimeout(() => {
-    //   this.shouldShow = false;
-    // }, this.notification.duration);
+    setTimeout(() => {
+      this.shouldShow = false;
+    }, this.notification.duration);
   },
   components: {
     CheckCircleIcon,

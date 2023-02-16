@@ -12,7 +12,7 @@
 
     <Menu as="div" class="relative inline-block text-left">
       <div>
-        <MenuButton>
+        <MenuButton v-tooltip="'Extra select options'">
           <div
             class="inline-flex items-center text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 py-1.5 rounded-md"
           >
@@ -41,7 +41,9 @@
               <a
                 @click="selectOption(option)"
                 :class="[
-                  active ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100' : 'text-gray-700 dark:text-gray-200',
+                  active
+                    ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
+                    : 'text-gray-700 dark:text-gray-200',
                   'block px-4 py-2 text-sm',
                 ]"
               >

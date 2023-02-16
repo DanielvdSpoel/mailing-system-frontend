@@ -1,7 +1,9 @@
 <template>
   <div
-      :class="[
-      !email.is_read ? 'font-bold dark:text-gray-300' : 'text-gray-800 dark:text-gray-200',
+    :class="[
+      !email.is_read
+        ? 'font-bold dark:text-gray-300'
+        : 'text-gray-800 dark:text-gray-200',
       isEmailSelected ? 'bg-gray-100 dark:bg-gray-900/40' : '',
       'grid grid-cols-[5%_25%_60%_10%] px-3 py-2 hover:shadow-lg cursor-pointer overflow-hidden',
     ]"
