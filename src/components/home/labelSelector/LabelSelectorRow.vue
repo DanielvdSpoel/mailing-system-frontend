@@ -5,6 +5,8 @@
   >
     <input
       @click="checkboxClicked"
+      v-model="internalValue"
+      :indeterminate.prop="isIndeterminate"
       type="checkbox"
       class="h-4 w-4 mt-1 rounded border-gray-300 dark:border-gray-900 dark:bg-gray-600 text-indigo-600 focus:ring-indigo-500"
     />
@@ -22,10 +24,13 @@ export default {
   name: "LabelSelectorRow",
   props: {
     label: Object,
+    isIndeterminate: Boolean,
+    modelValue: Boolean,
     closePanel: Function,
   },
   data() {
     return {
+      internalValue: false,
       checkboxClick: false,
     };
   },
@@ -41,8 +46,9 @@ export default {
         const data = {
           labels: [this.label.id],
         };
+
         this.$http
-          .patch("/emails/batch-update", { ids, data })
+          .patch("/emails/batch-update", { ids, ...data })
           .then((response) => {
             useSelectedEmailStore().deselectAllEmails();
             useEmailStore().fetchEmails();
@@ -50,6 +56,17 @@ export default {
         this.closePanel();
       }
       this.checkboxClick = false;
+    },
+  },
+  watch: {
+    internalValue(value) {
+      this.$emit("reset-indeterminate", value);
+      this.$emit("update:modelValue", value);
+    },
+    modelValue(value) {
+      if (value !== this.internalValue) {
+        this.internalValue = value;
+      }
     },
   },
 };

@@ -36,6 +36,9 @@ export const useEmailStore = defineStore("emails", {
         senderAddresses: ["All inboxes"],
       };
     },
+    getEmailById: (state) => {
+      return (emailId) => state.emails.find((email) => email.id === emailId);
+    },
   },
   actions: {
     setPage(page) {

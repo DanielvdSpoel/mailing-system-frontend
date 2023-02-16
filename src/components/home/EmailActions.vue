@@ -100,7 +100,7 @@ import {
 } from "@heroicons/vue/24/outline";
 import { useSelectedEmailStore } from "@/stores/selectedEmails";
 import { useEmailStore } from "@/stores/models/email";
-import LabelSelector from "@/components/home/LabelSelector.vue";
+import LabelSelector from "@/components/home/labelSelector/LabelSelector.vue";
 export default {
   name: "EmailActions",
   components: {
