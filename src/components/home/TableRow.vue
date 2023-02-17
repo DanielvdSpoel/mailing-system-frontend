@@ -93,45 +93,45 @@ export default {
         case "black":
           return "bg-black text-white";
         case "slate":
-          return "bg-slate-300 text-slate-800";
+          return "bg-slate-300 text-slate-800 dark:text-slate-100 dark:bg-slate-700";
         case "gray":
-          return "bg-gray-300 text-gray-800";
+          return "bg-gray-300 text-gray-800 dark:text-gray-100 dark:bg-gray-700";
         case "red":
-          return "bg-red-300 text-red-800";
+          return "bg-red-300 text-red-800 dark:text-red-100 dark:bg-red-700";
         case "orange":
-          return "bg-orange-300 text-orange-800";
+          return "bg-orange-300 text-orange-800 dark:text-orange-100 dark:bg-orange-700";
         case "amber":
-          return "bg-amber-300 text-amber-800";
+          return "bg-amber-300 text-amber-800 dark:text-amber-100 dark:bg-amber-700";
         case "yellow":
-          return "bg-yellow-300 text-yellow-800";
+          return "bg-yellow-300 text-yellow-800 dark:text-yellow-100 dark:bg-yellow-700";
         case "lime":
-          return "bg-lime-300 text-lime-800";
+          return "bg-lime-300 text-lime-800 dark:text-lime-100 dark:bg-lime-700";
         case "green":
-          return "bg-green-300 text-green-800";
+          return "bg-green-300 text-green-800 dark:text-green-100 dark:bg-green-700";
         case "emerald":
-          return "bg-emerald-300 text-emerald-800";
+          return "bg-emerald-300 text-emerald-800 dark:text-emerald-100 dark:bg-emerald-700";
         case "teal":
-          return "bg-teal-300 text-teal-800";
+          return "bg-teal-300 text-teal-800 dark:text-teal-100 dark:bg-teal-700";
         case "cyan":
-          return "bg-cyan-300 text-cyan-800";
+          return "bg-cyan-300 text-cyan-800 dark:text-cyan-100 dark:bg-cyan-700";
         case "sky":
-          return "bg-sky-300 text-sky-800";
+          return "bg-sky-300 text-sky-800 dark:text-sky-100 dark:bg-sky-700";
         case "blue":
-          return "bg-blue-300 text-blue-800";
+          return "bg-blue-300 text-blue-800 dark:text-blue-100 dark:bg-blue-700";
         case "indigo":
-          return "bg-indigo-300 text-indigo-800";
+          return "bg-indigo-300 text-indigo-800 dark:text-indigo-100 dark:bg-indigo-700";
         case "violet":
-          return "bg-violet-300 text-violet-800";
+          return "bg-violet-300 text-violet-800 dark:text-violet-100 dark:bg-violet-700";
         case "purple":
-          return "bg-purple-300 text-purple-800";
+          return "bg-purple-300 text-purple-800 dark:text-purple-100 dark:bg-purple-700";
         case "fuchsia":
-          return "bg-fuchsia-300 text-fuchsia-800";
+          return "bg-fuchsia-300 text-fuchsia-800 dark:text-fuchsia-100 dark:bg-fuchsia-700";
         case "pink":
-          return "bg-pink-300 text-pink-800";
+          return "bg-pink-300 text-pink-800 dark:text-pink-100 dark:bg-pink-700";
         case "rose":
-          return "bg-rose-300 text-rose-800";
+          return "bg-rose-300 text-rose-800 dark:text-rose-100 dark:bg-rose-700";
         default:
-          return "bg-gray-300 text-gray-800";
+          return "bg-gray-300 text-gray-800 dark:text-gray-100 dark:bg-gray-700";
       }
     },
   },

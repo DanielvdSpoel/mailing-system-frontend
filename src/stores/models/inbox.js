@@ -6,6 +6,9 @@ export const useInboxStore = defineStore("inboxes", {
     return { inboxes: [] };
   },
   getters: {
+    getInboxById: (state) => {
+      return (inboxId) => state.inboxes.find((inbox) => inbox.id === inboxId);
+    },
     getInboxes(state) {
       if (state.inboxes.length > 0) {
         return state.inboxes;

@@ -17,14 +17,15 @@
           aria-hidden="true"
         />
       </div>
-      <!--focus:border-indigo-500 focus:ring-indigo-500-->
       <form @submit.prevent="fullSearch">
         <input
           @click="open = true"
           v-model="query"
           type="text"
           :class="[
-            open ? 'rounded-t-md' : 'rounded-md border-gray-300 dark:border-gray-800',
+            open
+              ? 'rounded-t-md'
+              : 'rounded-md border-gray-300 dark:border-gray-800',
             'block w-full focus:border-none focus:ring-0 focus:ring-offset-0  pl-9 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-800',
           ]"
           placeholder="Search"
@@ -45,7 +46,11 @@
           >
             <ul>
               <li v-if="results.emails.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Emails</h2>
+                <h2
+                  class="text-xs font-semibold text-gray-900 dark:text-gray-100"
+                >
+                  Emails
+                </h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="email in results.emails"
@@ -81,7 +86,11 @@
                 </ul>
               </li>
               <li v-if="results.email_addresses.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Contacts</h2>
+                <h2
+                  class="text-xs font-semibold text-gray-900 dark:text-gray-100"
+                >
+                  Contacts
+                </h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="email_address in results.email_addresses"
@@ -89,14 +98,16 @@
                     class="group"
                   >
                     <li
-                      class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
+                        @click="emailAddressSearch(email_address)"
+
+                        class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
                     >
                       <UserIcon
                         class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
                         aria-hidden="true"
                       />
                       <span class="ml-3 flex-auto truncate">
-                        {{email_address.label }}
+                        {{ email_address.label }}
                       </span>
                       <span
                         class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm"
@@ -107,7 +118,11 @@
                 </ul>
               </li>
               <li v-if="results.labels.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Labels</h2>
+                <h2
+                  class="text-xs font-semibold text-gray-900 dark:text-gray-100"
+                >
+                  Labels
+                </h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="label in results.labels"
@@ -115,6 +130,7 @@
                     class="group"
                   >
                     <li
+                      @click="labelSearch(label)"
                       class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
                     >
                       <TagIcon
@@ -137,7 +153,9 @@
                 class="mx-auto h-6 w-6 text-gray-400 dark:text-gray-300"
                 aria-hidden="true"
               />
-              <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">No results found</p>
+              <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">
+                No results found
+              </p>
               <p class="mt-2 text-gray-500 dark:text-gray-200">
                 We couldn’t find anything with that term. Please try again.
               </p>
@@ -184,6 +202,16 @@ export default {
     };
   },
   methods: {
+    emailAddressSearch(email_address) {
+      useEmailStore().setSenderId(email_address.id);
+      this.open = false;
+      this.query = "";
+    },
+    labelSearch(label) {
+      useEmailStore().setLabelId(label.id);
+      this.open = false;
+      this.query = "";
+    },
     fullSearch() {
       useEmailStore().setSearch(this.query);
       this.open = false;

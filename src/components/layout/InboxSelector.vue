@@ -127,7 +127,7 @@ export default {
   },
   methods: {
     selectInbox(inbox) {
-      useEmailStore().selectInbox(inbox);
+      useEmailStore().selectInbox(inbox.id);
     },
   },
 };

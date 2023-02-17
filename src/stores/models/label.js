@@ -6,6 +6,9 @@ export const useLabelStore = defineStore("labels", {
     return { labels: [], synced: false };
   },
   getters: {
+    getLabelById: (state) => {
+      return (labelId) => state.labels.find((label) => label.id === labelId);
+    },
     getLabels(state) {
       if (state.labels.length > 0) {
         return state.labels;

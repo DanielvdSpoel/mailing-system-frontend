@@ -1,15 +1,18 @@
 import { defineStore } from "pinia";
 import http from "@/composables/http";
+import { useInboxStore } from "@/stores/models/inbox";
 
 export const useEmailStore = defineStore("emails", {
   state: () => {
     return {
       emails: null,
-      selectedInbox: null,
       meta: null,
       urls: null,
       amountPerPage: 25,
       currentPage: 1,
+      inboxId: null,
+      labelId: null,
+      senderId: null,
       search: "",
     };
   },
@@ -28,8 +31,8 @@ export const useEmailStore = defineStore("emails", {
       return state.emails;
     },
     getSelectedInbox(state) {
-      if (state.selectedInbox) {
-        return state.selectedInbox;
+      if (state.inboxId) {
+        return useInboxStore().getInboxById(state.inboxId);
       }
       return {
         id: null,
@@ -47,6 +50,16 @@ export const useEmailStore = defineStore("emails", {
       this.currentPage = 1;
       this.fetchEmails();
     },
+    setLabelId(label) {
+      this.labelId = label;
+      this.currentPage = 1;
+      this.fetchEmails();
+    },
+    setSenderId(sender) {
+      this.senderId = sender;
+      this.currentPage = 1;
+      this.fetchEmails();
+    },
     setPage(page) {
       console.log("setPage", page);
       this.currentPage = page;
@@ -58,7 +71,7 @@ export const useEmailStore = defineStore("emails", {
       this.fetchEmails();
     },
     selectInbox(inbox) {
-      this.selectedInbox = inbox;
+      this.inboxId = inbox;
     },
     fetchEmails() {
       const params = {
@@ -71,6 +84,14 @@ export const useEmailStore = defineStore("emails", {
 
       if (this.search) {
         params.search = this.search;
+      }
+
+      if (this.labelId) {
+        params.label_id = this.labelId;
+      }
+
+      if (this.senderId) {
+        params.sender_id = this.senderId;
       }
 
       http
