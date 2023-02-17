@@ -44,6 +44,25 @@
             class="w-full p-3 transform overflow-hidden rounded-b-md bg-white border-t border-gray-300 transition-all"
           >
             <ul>
+              <li v-if="results.emails.length > 0">
+                <h2 class="text-xs font-semibold text-gray-900">Emails</h2>
+                <ul class="-mx-4 mt-2 text-sm text-gray-700">
+                  <div v-for="email in results.emails" :key="email.id" class="group">
+                    <li class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white">
+                      <EnvelopeIcon class="h-6 w-6 flex-none group-hover:text-white text-gray-400" aria-hidden="true" />
+                      <div class="w-full">
+                        <div class="flex">
+                          <span class="ml-3 flex-auto truncate">{{ email.subject }}</span>
+                          <span class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm">{{ getTime(email) }}</span>
+                        </div>
+                        <div>
+                          <span class="ml-3 flex-auto truncate text-gray-400 group-hover:text-gray-200 italic text-sm">{{ email.sender.label }}</span>
+                        </div>
+                      </div>
+                    </li>
+                  </div>
+                </ul>
+              </li>
               <li v-if="results.email_addresses.length > 0">
                 <h2 class="text-xs font-semibold text-gray-900">Contacts</h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700">
@@ -52,7 +71,6 @@
                       <UserIcon class="h-6 w-6 flex-none group-hover:text-white text-gray-400" aria-hidden="true" />
                       <span class="ml-3 flex-auto truncate">{{ email_address.label }}</span>
                       <span class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm">{{ email_address.email }}</span>
-
                     </li>
                   </div>
                 </ul>
@@ -85,6 +103,9 @@
 import {ExclamationTriangleIcon, MagnifyingGlassIcon, TagIcon, UserIcon} from "@heroicons/vue/20/solid";
 import { TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { debounce } from "@/composables/debounce";
+import {useEmailStore} from "@/stores/models/email";
+import {EnvelopeIcon} from "@heroicons/vue/24/solid";
+import {DateTime} from "luxon";
 export default {
   name: "SearchBar",
   components: {
@@ -94,6 +115,7 @@ export default {
     UserIcon,
     ExclamationTriangleIcon,
     TagIcon,
+    EnvelopeIcon,
   },
   data() {
     return {
@@ -108,10 +130,25 @@ export default {
   },
   methods: {
     fullSearch() {
-      console.log("full search");
+      useEmailStore().setSearch(this.query);
+      this.open = false;
     },
     clickAway() {
       this.open = false;
+    },
+    getTime(email) {
+      const received = DateTime.fromFormat(
+          email.received_at,
+          "yyyy-MM-dd HH:mm:ss"
+      );
+      const now = DateTime.now();
+      if (received.hasSame(now, "day")) {
+        return received.toFormat("HH:mm");
+      }
+      if (received.hasSame(now, "year")) {
+        return received.toFormat("d LLL.");
+      }
+      return received.toFormat("dd-MM-yyyy");
     },
   },
   computed: {

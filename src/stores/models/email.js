@@ -42,6 +42,11 @@ export const useEmailStore = defineStore("emails", {
     },
   },
   actions: {
+    setSearch(search) {
+      this.search = search;
+      this.currentPage = 1;
+      this.fetchEmails();
+    },
     setPage(page) {
       console.log("setPage", page);
       this.currentPage = page;
@@ -62,6 +67,10 @@ export const useEmailStore = defineStore("emails", {
       };
       if (this.selectedInbox) {
         params.inbox_id = this.selectedInbox.id;
+      }
+
+      if (this.search) {
+        params.search = this.search;
       }
 
       http
