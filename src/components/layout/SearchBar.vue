@@ -4,7 +4,7 @@
     <div
       v-click-away="clickAway"
       :class="[
-        open ? 'border border-gray-300' : '',
+        open ? 'border border-gray-300 dark:border-gray-800' : '',
         'relative mt-1 rounded-md shadow-2xl',
       ]"
     >
@@ -24,8 +24,8 @@
           v-model="query"
           type="text"
           :class="[
-            open ? 'rounded-t-md' : 'rounded-md border-gray-300',
-            'block w-full focus:border-none focus:ring-0 focus:ring-offset-0  pl-9 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-900',
+            open ? 'rounded-t-md' : 'rounded-md border-gray-300 dark:border-gray-800',
+            'block w-full focus:border-none focus:ring-0 focus:ring-offset-0  pl-9 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-800',
           ]"
           placeholder="Search"
         />
@@ -41,12 +41,12 @@
           leave-to="opacity-0 scale-95"
         >
           <div
-            class="w-full p-3 transform overflow-hidden rounded-b-md bg-white border-t border-gray-300 transition-all"
+            class="w-full p-3 transform overflow-hidden rounded-b-md bg-white dark:bg-gray-700 border-t border-gray-300 dark:border-gray-800 transition-all max-h-[90vh] overflow-y-scroll"
           >
             <ul>
               <li v-if="results.emails.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900">Emails</h2>
-                <ul class="-mx-4 mt-2 text-sm text-gray-700">
+                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Emails</h2>
+                <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="email in results.emails"
                     :key="email.id"
@@ -81,8 +81,8 @@
                 </ul>
               </li>
               <li v-if="results.email_addresses.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900">Contacts</h2>
-                <ul class="-mx-4 mt-2 text-sm text-gray-700">
+                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Contacts</h2>
+                <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="email_address in results.email_addresses"
                     :key="email_address.id"
@@ -95,9 +95,9 @@
                         class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
                         aria-hidden="true"
                       />
-                      <span class="ml-3 flex-auto truncate">{{
-                        email_address.label
-                      }}</span>
+                      <span class="ml-3 flex-auto truncate">
+                        {{email_address.label }}
+                      </span>
                       <span
                         class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm"
                         >{{ email_address.email }}</span
@@ -107,8 +107,8 @@
                 </ul>
               </li>
               <li v-if="results.labels.length > 0">
-                <h2 class="text-xs font-semibold text-gray-900">Labels</h2>
-                <ul class="-mx-4 mt-2 text-sm text-gray-700">
+                <h2 class="text-xs font-semibold text-gray-900 dark:text-gray-100">Labels</h2>
+                <ul class="-mx-4 mt-2 text-sm text-gray-700 dark:text-gray-200">
                   <div
                     v-for="label in results.labels"
                     :key="label.id"
@@ -134,11 +134,11 @@
               class="py-14 px-6 text-center text-sm sm:px-14"
             >
               <ExclamationTriangleIcon
-                class="mx-auto h-6 w-6 text-gray-400"
+                class="mx-auto h-6 w-6 text-gray-400 dark:text-gray-300"
                 aria-hidden="true"
               />
-              <p class="mt-4 font-semibold text-gray-900">No results found</p>
-              <p class="mt-2 text-gray-500">
+              <p class="mt-4 font-semibold text-gray-900 dark:text-gray-100">No results found</p>
+              <p class="mt-2 text-gray-500 dark:text-gray-200">
                 We couldn’t find anything with that term. Please try again.
               </p>
             </div>
