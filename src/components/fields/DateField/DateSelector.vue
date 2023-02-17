@@ -112,6 +112,7 @@ export default {
       type: String,
       default: "dd-MM-yyyy",
     },
+    // eslint-disable-next-line vue/require-prop-type-constructor
     modelValue: String | Array,
     allowMultipleDates: {
       type: Boolean,
@@ -119,7 +120,7 @@ export default {
     },
     disabledDates: {
       type: Array,
-      default: [],
+      default: () => [],
     },
     year: Number,
     month: Number,

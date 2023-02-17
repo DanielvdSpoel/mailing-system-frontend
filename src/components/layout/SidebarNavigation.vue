@@ -63,54 +63,7 @@
               </div>
               <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="px-2">
-                  <div class="space-y-1">
-                    <a
-                      v-for="inbox in getInboxes"
-                      :key="inbox.id"
-                      :class="[
-                        false
-                          ? 'bg-primary-800 text-white'
-                          : 'text-primary-100 hover:bg-primary-600',
-                        'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                      ]"
-                    >
-                      <InboxIcon
-                        class="mr-4 h-6 w-6 flex-shrink-0 text-primary-300"
-                        aria-hidden="true"
-                      />
-                      {{ inbox.name }}
-                    </a>
-                  </div>
-                  <div class="mt-8">
-                    <!-- Secondary navigation -->
-                    <h3
-                      class="px-3 text-sm font-medium text-primary-100"
-                      id="desktop-teams-headline"
-                    >
-                      Labels
-                    </h3>
-                    <div
-                      class="mt-1 space-y-1"
-                      role="group"
-                      aria-labelledby="desktop-teams-headline"
-                    >
-                      <a
-                        v-for="label in getLabels"
-                        :key="label.name"
-                        href="#"
-                        class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-primary-100 hover:bg-primary-600"
-                      >
-                        <span
-                          :class="[
-                            getLabelColorClass(label),
-                            'w-2.5 h-2.5 mr-4 rounded-full ',
-                          ]"
-                          aria-hidden="true"
-                        />
-                        <span class="truncate">{{ label.name }}</span>
-                      </a>
-                    </div>
-                  </div>
+                  <SidebarContent />
                 </nav>
               </div>
             </DialogPanel>
@@ -140,46 +93,7 @@
         </div>
         <div class="mt-5 flex flex-1 flex-col">
           <nav class="flex-1 px-2 pb-4">
-            <InboxSelector />
-
-            <button
-              type="button"
-              class="mt-3 w-full inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base text-white shadow-sm hover:bg-indigo-800 dark:hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              <EnvelopeIcon class="-ml-1 mr-3 h-5 w-5" aria-hidden="true" />
-              Compose email
-            </button>
-
-            <div class="mt-8">
-              <!-- Secondary navigation -->
-              <h3
-                class="px-3 text-sm font-medium text-primary-100"
-                id="desktop-teams-headline"
-              >
-                Labels
-              </h3>
-              <div
-                class="mt-1 space-y-1 max-h-[64vh] overflow-y-scroll"
-                role="group"
-                aria-labelledby="desktop-teams-headline"
-              >
-                <a
-                  v-for="label in getLabels"
-                  :key="label.name"
-                  href="#"
-                  class="group flex items-center rounded-md px-3 py-2 text-sm font-medium text-primary-100 hover:bg-primary-600"
-                >
-                  <span
-                    :class="[
-                      getLabelColorClass(label),
-                      'w-2.5 h-2.5 mr-4 rounded-full ',
-                    ]"
-                    aria-hidden="true"
-                  />
-                  <span class="truncate">{{ label.name }}</span>
-                </a>
-              </div>
-            </div>
+            <SidebarContent />
           </nav>
         </div>
       </div>
@@ -188,34 +102,34 @@
 </template>
 
 <script>
-import { InboxIcon, EnvelopeIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { useLayoutStore } from "@/stores/layout";
 import { mapState } from "pinia";
 import {
   Dialog,
   DialogPanel,
-  Menu,
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
 import { useInboxStore } from "@/stores/models/inbox";
 import { useLabelStore } from "@/stores/models/label";
-import InboxSelector from "@/components/layout/InboxSelector.vue";
+import { useEmailStore } from "@/stores/models/email";
+import SidebarContent from "@/components/layout/SidebarContent.vue";
 
 export default {
   name: "SidebarNavigation",
   components: {
-    InboxSelector,
+    SidebarContent,
     Dialog,
     DialogPanel,
-    Menu,
     TransitionChild,
     TransitionRoot,
     XMarkIcon,
-    InboxIcon,
-    EnvelopeIcon,
   },
   methods: {
+    selectLabel(label) {
+      useEmailStore().setLabelId(label.id);
+    },
     getLabelColorClass(label) {
       switch (label.color) {
         case "black":

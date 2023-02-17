@@ -1,4 +1,4 @@
-import {defineStore} from "pinia";
+import { defineStore } from "pinia";
 import http from "@/composables/http";
 
 export const useEmailAddressStore = defineStore("emailAddresses", {

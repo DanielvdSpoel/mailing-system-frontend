@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { EnvelopeIcon } from "@heroicons/vue/24/solid";
 import SidebarNavigation from "@/components/layout/SidebarNavigation.vue";
 import SidebarButton from "@/components/layout/SidebarButton.vue";
 import ProfileButton from "@/components/layout/ProfileButton.vue";
@@ -44,7 +43,6 @@ export default {
     ProfileButton,
     SidebarButton,
     SidebarNavigation,
-    EnvelopeIcon,
   },
 };
 </script>

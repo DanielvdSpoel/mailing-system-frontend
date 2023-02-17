@@ -17,9 +17,6 @@
 </template>
 
 <script>
-import { useSelectedEmailStore } from "@/stores/selectedEmails";
-import { useEmailStore } from "@/stores/models/email";
-
 export default {
   name: "LabelSelectorRow",
   props: {

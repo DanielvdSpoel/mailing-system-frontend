@@ -98,9 +98,8 @@
                     class="group"
                   >
                     <li
-                        @click="emailAddressSearch(email_address)"
-
-                        class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
+                      @click="emailAddressSearch(email_address)"
+                      class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
                     >
                       <UserIcon
                         class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
