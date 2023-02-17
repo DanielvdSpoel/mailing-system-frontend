@@ -10,6 +10,7 @@ export const useEmailStore = defineStore("emails", {
       urls: null,
       amountPerPage: 25,
       currentPage: 1,
+      search: "",
     };
   },
   getters: {

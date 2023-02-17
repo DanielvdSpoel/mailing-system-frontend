@@ -26,6 +26,7 @@
           v-for="label in labels"
           v-model="selectedLabels[label.id]"
           @reset-indeterminate="indeterminateLabels[label.id] = false"
+          @submit="submit(label.id)"
           :is-indeterminate="indeterminateLabels[label.id]"
           :key="label.id"
           :closePanel="close"
@@ -59,6 +60,7 @@ import LabelSelectorRow from "@/components/home/labelSelector/LabelSelectorRow.v
 import { useLabelStore } from "@/stores/models/label";
 import { useSelectedEmailStore } from "@/stores/selectedEmails";
 import { useEmailStore } from "@/stores/models/email";
+import { useNotificationStore } from "@/stores/notifications";
 
 export default {
   name: "LabelSelectorContent",
@@ -107,7 +109,7 @@ export default {
     };
   },
   methods: {
-    submit() {
+    submit(additionalLabel = null) {
       const baseLabels = [];
       Object.keys(this.selectedLabels).forEach((label) => {
         if (this.selectedLabels[label]) {
@@ -118,14 +120,28 @@ export default {
       useSelectedEmailStore().selectedEmails.forEach((email) => {
         const emailObj = useEmailStore().getEmailById(email);
         const labels = [...baseLabels];
+        if (additionalLabel) {
+          labels.push(additionalLabel);
+        }
 
         emailObj.labels.forEach((label) => {
           if (this.indeterminateLabels[label.id]) {
             labels.push(label.id);
           }
         });
-        //todo make http call to update labels
+
+        this.$http.put(`/emails/${email}`, {
+          labels,
+        });
+        useNotificationStore().addNotification({
+          message: "Successfully updated the labels",
+          type: "success",
+          duration: 4000,
+        });
+        this.close();
       });
+
+      useEmailStore().fetchEmails();
     },
   },
   computed: {

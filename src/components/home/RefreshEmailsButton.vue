@@ -17,6 +17,7 @@
 import { ArrowPathIcon } from "@heroicons/vue/20/solid";
 import { useEmailStore } from "@/stores/models/email";
 import { useSelectedEmailStore } from "@/stores/selectedEmails";
+import { useNotificationStore } from "@/stores/notifications";
 
 export default {
   name: "RefreshEmailsButton",
@@ -45,6 +46,11 @@ export default {
         .post("/refresh", data)
         .then(async () => {
           useEmailStore().fetchEmails();
+          useNotificationStore().addNotification({
+            message: "Successfully refreshed the inbox",
+            type: "success",
+            duration: 4000,
+          });
         })
         .catch((error) => {
           console.log(error);

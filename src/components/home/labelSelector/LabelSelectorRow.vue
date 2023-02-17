@@ -40,20 +40,7 @@ export default {
     },
     toggleLabel() {
       if (!this.checkboxClick) {
-        console.log("toggle label");
-
-        const ids = useSelectedEmailStore().getSelectedIds;
-        const data = {
-          labels: [this.label.id],
-        };
-
-        this.$http
-          .patch("/emails/batch-update", { ids, ...data })
-          .then((response) => {
-            useSelectedEmailStore().deselectAllEmails();
-            useEmailStore().fetchEmails();
-          });
-        this.closePanel();
+        this.$emit("submit");
       }
       this.checkboxClick = false;
     },

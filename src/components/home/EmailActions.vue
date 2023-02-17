@@ -18,7 +18,7 @@
         </button>
       </div>
       <div class="flex gap-2 px-2">
-        <LabelSelector title="Label and archive" label="Label as and move to:">
+        <LabelSelector title="Label email" label="Label as:">
           <template #icon>
             <FolderArrowDownIcon class="h-5 w-5" aria-hidden="true" />
           </template>
@@ -101,6 +101,7 @@ import {
 import { useSelectedEmailStore } from "@/stores/selectedEmails";
 import { useEmailStore } from "@/stores/models/email";
 import LabelSelector from "@/components/home/labelSelector/LabelSelector.vue";
+import { useNotificationStore } from "@/stores/notifications";
 export default {
   name: "EmailActions",
   components: {
@@ -121,14 +122,17 @@ export default {
   methods: {
     updateEmails(data, deselect = false) {
       const ids = useSelectedEmailStore().getSelectedIds;
-      this.$http
-        .patch("/emails/batch-update", { ids, ...data })
-        .then((response) => {
-          if (deselect) {
-            useSelectedEmailStore().deselectAllEmails();
-          }
-          useEmailStore().fetchEmails();
+      this.$http.patch("/emails/batch-update", { ids, ...data }).then(() => {
+        if (deselect) {
+          useSelectedEmailStore().deselectAllEmails();
+        }
+        useEmailStore().fetchEmails();
+        useNotificationStore().addNotification({
+          message: "Successfully updated the emails",
+          type: "success",
+          duration: 4000,
         });
+      });
     },
   },
   computed: {
