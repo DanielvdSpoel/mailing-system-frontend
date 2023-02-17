@@ -20,14 +20,14 @@
       <!--focus:border-indigo-500 focus:ring-indigo-500-->
       <form @submit.prevent="fullSearch">
         <input
-            @click="open = true"
-            v-model="query"
-            type="text"
-            :class="[
-          open ? 'rounded-t-md' : 'rounded-md border-gray-300',
-          'block w-full focus:border-none focus:ring-0 focus:ring-offset-0  pl-9 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-900',
-        ]"
-            placeholder="Search"
+          @click="open = true"
+          v-model="query"
+          type="text"
+          :class="[
+            open ? 'rounded-t-md' : 'rounded-md border-gray-300',
+            'block w-full focus:border-none focus:ring-0 focus:ring-offset-0  pl-9 sm:text-sm dark:bg-gray-700 dark:text-gray-300 dark:border-gray-900',
+          ]"
+          placeholder="Search"
         />
       </form>
       <TransitionRoot :show="open" appear>
@@ -47,16 +47,33 @@
               <li v-if="results.emails.length > 0">
                 <h2 class="text-xs font-semibold text-gray-900">Emails</h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700">
-                  <div v-for="email in results.emails" :key="email.id" class="group">
-                    <li class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white">
-                      <EnvelopeIcon class="h-6 w-6 flex-none group-hover:text-white text-gray-400" aria-hidden="true" />
+                  <div
+                    v-for="email in results.emails"
+                    :key="email.id"
+                    class="group"
+                  >
+                    <li
+                      class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
+                    >
+                      <EnvelopeIcon
+                        class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
+                        aria-hidden="true"
+                      />
                       <div class="w-full">
                         <div class="flex">
-                          <span class="ml-3 flex-auto truncate">{{ email.subject }}</span>
-                          <span class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm">{{ getTime(email) }}</span>
+                          <span class="ml-3 flex-auto truncate">{{
+                            email.subject
+                          }}</span>
+                          <span
+                            class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm"
+                            >{{ getTime(email) }}</span
+                          >
                         </div>
                         <div>
-                          <span class="ml-3 flex-auto truncate text-gray-400 group-hover:text-gray-200 italic text-sm">{{ email.sender.label }}</span>
+                          <span
+                            class="ml-3 flex-auto truncate text-gray-400 group-hover:text-gray-200 italic text-sm"
+                            >{{ email.sender.label }}</span
+                          >
                         </div>
                       </div>
                     </li>
@@ -66,11 +83,25 @@
               <li v-if="results.email_addresses.length > 0">
                 <h2 class="text-xs font-semibold text-gray-900">Contacts</h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700">
-                  <div v-for="email_address in results.email_addresses" :key="email_address.id" class="group">
-                    <li class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white">
-                      <UserIcon class="h-6 w-6 flex-none group-hover:text-white text-gray-400" aria-hidden="true" />
-                      <span class="ml-3 flex-auto truncate">{{ email_address.label }}</span>
-                      <span class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm">{{ email_address.email }}</span>
+                  <div
+                    v-for="email_address in results.email_addresses"
+                    :key="email_address.id"
+                    class="group"
+                  >
+                    <li
+                      class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
+                    >
+                      <UserIcon
+                        class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
+                        aria-hidden="true"
+                      />
+                      <span class="ml-3 flex-auto truncate">{{
+                        email_address.label
+                      }}</span>
+                      <span
+                        class="flex-auto truncate text-right text-gray-400 group-hover:text-gray-200 italic text-sm"
+                        >{{ email_address.email }}</span
+                      >
                     </li>
                   </div>
                 </ul>
@@ -78,19 +109,38 @@
               <li v-if="results.labels.length > 0">
                 <h2 class="text-xs font-semibold text-gray-900">Labels</h2>
                 <ul class="-mx-4 mt-2 text-sm text-gray-700">
-                  <div v-for="label in results.labels" :key="label.id" class="group">
-                    <li class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white">
-                      <TagIcon class="h-6 w-6 flex-none group-hover:text-white text-gray-400" aria-hidden="true" />
-                      <span class="ml-3 flex-auto truncate">{{ label.name }}</span>
+                  <div
+                    v-for="label in results.labels"
+                    :key="label.id"
+                    class="group"
+                  >
+                    <li
+                      class="flex cursor-default select-none items-center px-4 py-2 group-hover:bg-indigo-600 group-hover:text-white"
+                    >
+                      <TagIcon
+                        class="h-6 w-6 flex-none group-hover:text-white text-gray-400"
+                        aria-hidden="true"
+                      />
+                      <span class="ml-3 flex-auto truncate">{{
+                        label.name
+                      }}</span>
                     </li>
                   </div>
                 </ul>
               </li>
             </ul>
-            <div v-if="hasNoResults" class="py-14 px-6 text-center text-sm sm:px-14">
-              <ExclamationTriangleIcon class="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
+            <div
+              v-if="hasNoResults"
+              class="py-14 px-6 text-center text-sm sm:px-14"
+            >
+              <ExclamationTriangleIcon
+                class="mx-auto h-6 w-6 text-gray-400"
+                aria-hidden="true"
+              />
               <p class="mt-4 font-semibold text-gray-900">No results found</p>
-              <p class="mt-2 text-gray-500">We couldn’t find anything with that term. Please try again.</p>
+              <p class="mt-2 text-gray-500">
+                We couldn’t find anything with that term. Please try again.
+              </p>
             </div>
           </div>
         </TransitionChild>
@@ -100,12 +150,17 @@
 </template>
 
 <script>
-import {ExclamationTriangleIcon, MagnifyingGlassIcon, TagIcon, UserIcon} from "@heroicons/vue/20/solid";
+import {
+  ExclamationTriangleIcon,
+  MagnifyingGlassIcon,
+  TagIcon,
+  UserIcon,
+} from "@heroicons/vue/20/solid";
 import { TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { debounce } from "@/composables/debounce";
-import {useEmailStore} from "@/stores/models/email";
-import {EnvelopeIcon} from "@heroicons/vue/24/solid";
-import {DateTime} from "luxon";
+import { useEmailStore } from "@/stores/models/email";
+import { EnvelopeIcon } from "@heroicons/vue/24/solid";
+import { DateTime } from "luxon";
 export default {
   name: "SearchBar",
   components: {
@@ -138,8 +193,8 @@ export default {
     },
     getTime(email) {
       const received = DateTime.fromFormat(
-          email.received_at,
-          "yyyy-MM-dd HH:mm:ss"
+        email.received_at,
+        "yyyy-MM-dd HH:mm:ss"
       );
       const now = DateTime.now();
       if (received.hasSame(now, "day")) {
@@ -175,7 +230,7 @@ export default {
           })
           .then((response) => {
             that.results[category] = response.data.data;
-            console.log(that.results)
+            console.log(that.results);
           });
       });
     }, 1000);

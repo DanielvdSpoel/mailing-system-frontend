@@ -51,7 +51,7 @@ export default {
         .then(async (result) => {
           const userStore = useUserStore();
           await userStore.setToken(result.data.token);
-          await userStore.fetchUser(this.$http);
+          await userStore.fetchUser();
 
           useNotificationStore().addNotification({
             message: "Login successful",
